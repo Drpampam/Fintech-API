@@ -10,6 +10,7 @@ using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
 using WalletAPI.Common.Utilities.Helpers;
+using WalletAPI.Services.Core;
 using WalletAPI.Services.Data.Services;
 using WalletAPI.Services.DTOs;
 using WalletAPI.Services.Models;
@@ -17,6 +18,7 @@ using WalletAPI.Services.Models;
 namespace Jumga.Services.API.Controllers
 {
     [Route("api/v1/[controller]")]
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [ApiController]
     public class UserController : ControllerBase
     {
@@ -24,28 +26,41 @@ namespace Jumga.Services.API.Controllers
         private readonly UserManager<User> _userManager;
         private readonly IUserCurrencyRepository _userCurrencyRepository;
         private readonly IGenericRepository<UserCurrency> _userCurrencyRepo;
+        private readonly IGenericRepository<Wallet> _walletRepo;
+        private readonly IWalletRepository _walletRepository;
+        private readonly ICurrencyService _currencyService;
+
         public UserController(ILogger<UserController> logger, UserManager<User> userManager, 
-            IUserCurrencyRepository userCurrencyRepository, IGenericRepository<UserCurrency> userCurrencyRepo)
+            IUserCurrencyRepository userCurrencyRepository, IGenericRepository<UserCurrency> userCurrencyRepo,
+            IGenericRepository<Wallet> walletRepo, IWalletRepository walletRepository, ICurrencyService currencyService)
         {
             _logger = logger;
             _userManager = userManager;
             _userCurrencyRepository = userCurrencyRepository;
             _userCurrencyRepo = userCurrencyRepo;
+            _walletRepo = walletRepo;
+            _walletRepository = walletRepository;
+            _currencyService = currencyService;
         }
 
         // Promote User
+        [Authorize(Roles = "admin")]
         [HttpPost("{id}/promote-user")]
         public async Task<IActionResult> PromoteUser(string id)
         {
             if (string.IsNullOrWhiteSpace(id))
                 return BadRequest(ResponseMessage.Message("Bad request", errors: "Not user id found"));
 
-            var user = await _userManager.GetUserAsync(User);
+            var admin = await _userManager.GetUserAsync(User);
 
-            if (user == null)
+            if (admin == null)
                 return BadRequest(ResponseMessage.Message("Not found", errors: "User does not exist"));
-            if (user.Id != id)
+            if (admin.Id == id)
                 return Unauthorized(ResponseMessage.Message("Unauthorized", errors: "User is unauthorized"));
+
+            var user = await _userManager.FindByIdAsync(id);
+            if(user == null)
+                return BadRequest(ResponseMessage.Message("Not found", errors: "User does not exist"));
 
             try
             {
@@ -60,11 +75,12 @@ namespace Jumga.Services.API.Controllers
             catch (Exception e)
             {
                 _logger.LogError(e.Message);
-                return BadRequest(ResponseMessage.Message("Bad request", errors: new { message = "Data processing error" }));
+                return BadRequest(ResponseMessage.Message("Bad request", errors: "Data processing error"));
             }
         }
 
         // Demote User
+        [Authorize(Roles = "admin")]
         [HttpPost("{id}/demote-user")]
         public async Task<IActionResult> DemoteUser(string id)
         {
@@ -73,12 +89,16 @@ namespace Jumga.Services.API.Controllers
                 if (string.IsNullOrWhiteSpace(id))
                     return BadRequest(ResponseMessage.Message("Bad request", errors: "Not user id found"));
 
-                var user = await _userManager.GetUserAsync(User);
+                var admin = await _userManager.GetUserAsync(User);
 
+                if (admin == null)
+                    return BadRequest(ResponseMessage.Message("Not found", errors: "User does not exist"));
+                if (admin.Id == id)
+                    return Unauthorized(ResponseMessage.Message("Unauthorized", errors: "User is unauthorized"));
+
+                var user = await _userManager.FindByIdAsync(id);
                 if (user == null)
                     return BadRequest(ResponseMessage.Message("Not found", errors: "User does not exist"));
-                if (user.Id != id)
-                    return Unauthorized(ResponseMessage.Message("Unauthorized", errors: "User is unauthorized"));
 
                 try
                 {
@@ -93,16 +113,18 @@ namespace Jumga.Services.API.Controllers
                 catch (Exception e)
                 {
                     _logger.LogError(e.Message);
-                    return BadRequest(ResponseMessage.Message("Bad request", errors: new { message = "Data processing error" }));
+                    return BadRequest(ResponseMessage.Message("Bad request", errors: "Data processing error"));
                 }
             }
             catch (Exception e)
             {
                 _logger.LogError(e.Message);
-                return BadRequest(ResponseMessage.Message("Bad request", errors: new { message = "Data processing error" }));
+                return BadRequest(ResponseMessage.Message("Bad request", errors: "Data processing error"));
             }
         }
 
+        // Change User Currency
+        [Authorize(Roles = "admin")]
         [HttpPost("{id}/change-user-currency")]
         public async Task<IActionResult> ChangeUserCurrency(string id, string newUserCurrency)
         {
@@ -111,10 +133,20 @@ namespace Jumga.Services.API.Controllers
                 if (string.IsNullOrWhiteSpace(id))
                     return BadRequest(ResponseMessage.Message("Bad request", errors: "Not user id found"));
 
-                var user = await _userManager.GetUserAsync(User);
+                newUserCurrency = newUserCurrency.ToUpper();
+                if (!await _currencyService.VerifyCurrencyExist(newUserCurrency))
+                    return BadRequest(ResponseMessage.Message("Bad request", errors: "Enter a valid Currency Type"));
 
-                if (user == null)
+                var admin = await _userManager.GetUserAsync(User);
+
+                if (admin == null)
                     return NotFound(ResponseMessage.Message("Not found", errors: "User does not exist"));
+                if (admin.Id == id)
+                    return Unauthorized(ResponseMessage.Message("Unauthorized", errors: "User is unauthorized"));
+
+                var user = await _userManager.FindByIdAsync(id);
+                if (user == null)
+                    return BadRequest(ResponseMessage.Message("Not found", errors: "User does not exist"));
 
                 if (await _userManager.IsInRoleAsync(user, "admin"))
                     return BadRequest(ResponseMessage.Message("Bad request", errors: "User is Admin, cannot change currency"));
@@ -129,7 +161,7 @@ namespace Jumga.Services.API.Controllers
                 catch (Exception e)
                 {
                     _logger.LogError(e.Message);
-                    return BadRequest(ResponseMessage.Message("Bad request", errors: new { message = "Data processing error" }));
+                    return BadRequest(ResponseMessage.Message("Bad request", errors: "Data processing error"));
                 }
 
                 try
@@ -140,17 +172,33 @@ namespace Jumga.Services.API.Controllers
                 catch (Exception e)
                 {
                     _logger.LogError(e.Message);
-                    return BadRequest(ResponseMessage.Message("Bad request", errors: new { message = "Data processing error" }));
+                    return BadRequest(ResponseMessage.Message("Bad request", errors: "Data processing error"));
                 }
 
-                // if(user)
+                if (await _userManager.IsInRoleAsync(user, "noob"))
+                {
+                    try
+                    {
+                        var wallet = await _walletRepository.GetWalletByUserId(user.Id);
+                        var value = await _currencyService.CurrencyConverter(wallet.Currency, newUserCurrency, wallet.Balance);
+                        wallet.Balance = value;
+                        wallet.Currency = newUserCurrency;
+                        await _walletRepo.Update(wallet);
+                    }
+                    catch (Exception e)
+                    {
+                        await _userCurrencyRepo.Delete(userCurrency);
+                        _logger.LogError(e.Message);
+                        return BadRequest(ResponseMessage.Message("Bad request", errors: "Data processing error"));
+                    }
+                }                    
 
-                return Ok(ResponseMessage.Message("Success", data: "Successfully changed user with id currency"));
+                return Ok(ResponseMessage.Message("Success", data: $"Successfully changed user with {user.Id} currency"));
             }
             catch (Exception e)
             {
                 _logger.LogError(e.Message);
-                return BadRequest(ResponseMessage.Message("Bad request", errors: new { message = "Data processing error" }));
+                return BadRequest(ResponseMessage.Message("Bad request", errors: "Data processing error"));
             }
         }
     }

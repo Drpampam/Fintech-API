@@ -6,10 +6,10 @@ namespace WalletAPI.Services.Models
 {
     public class Root
     {
-        public bool success { get; set; }
-        public int timestamp { get; set; }
-        public string @base { get; set; }
-        public string date { get; set; }
-        public Rates rates { get; set; }
+        public bool Success { get; set; }
+        public int Timestamp { get; set; }
+        public string Base { get; set; }
+        public string Date { get; set; }
+        public Dictionary<string, decimal> Rates { get; set; }
     }
 }

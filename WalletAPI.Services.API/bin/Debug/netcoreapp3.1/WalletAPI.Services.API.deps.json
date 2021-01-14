@@ -32,6 +32,7 @@
           "Microsoft.EntityFrameworkCore.Tools": "3.1.11",
           "Swashbuckle.AspNetCore": "5.6.3",
           "WalletAPI.Commons.Utilities": "1.0.0",
+          "WalletAPI.Services.Core": "1.0.0",
           "WalletAPI.Services.DTOs": "1.0.0",
           "WalletAPI.Services.Data": "1.0.0",
           "WalletAPI.Services.Models": "1.0.0",
@@ -271,7 +272,6 @@
           "System.Text.Encoding.Reference": "4.1.2.0",
           "System.Text.Encoding.Extensions.Reference": "4.1.2.0",
           "System.Text.Encodings.Web.Reference": "4.0.5.0",
-          "System.Text.Json": "4.0.1.0",
           "System.Text.RegularExpressions.Reference": "4.2.2.0",
           "System.Threading.Channels": "4.0.2.0",
           "System.Threading.Reference": "4.1.2.0",
@@ -1443,6 +1443,17 @@
         }
       },
       "System.Text.Encodings.Web/4.5.0": {},
+      "System.Text.Json/5.0.1": {
+        "runtime": {
+          "lib/netcoreapp3.0/System.Text.Json.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.220.61120"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp3.0/System.Text.Json.dll": {}
+        }
+      },
       "System.Text.RegularExpressions/4.3.0": {
         "dependencies": {
           "System.Runtime": "4.3.0"
@@ -1542,6 +1553,7 @@
         "dependencies": {
           "Microsoft.IdentityModel.Tokens": "6.8.0",
           "System.IdentityModel.Tokens.Jwt": "6.8.0",
+          "System.Text.Json": "5.0.1",
           "WalletAPI.Services.Models": "1.0.0"
         },
         "runtime": {
@@ -1549,6 +1561,17 @@
         },
         "compile": {
           "WalletAPI.Commons.Utilities.dll": {}
+        }
+      },
+      "WalletAPI.Services.Core/1.0.0": {
+        "dependencies": {
+          "WalletAPI.Commons.Utilities": "1.0.0"
+        },
+        "runtime": {
+          "WalletAPI.Services.Core.dll": {}
+        },
+        "compile": {
+          "WalletAPI.Services.Core.dll": {}
         }
       },
       "WalletAPI.Services.Data/1.0.0": {
@@ -3000,12 +3023,6 @@
         },
         "compileOnly": true
       },
-      "System.Text.Json/4.0.1.0": {
-        "compile": {
-          "System.Text.Json.dll": {}
-        },
-        "compileOnly": true
-      },
       "System.Text.RegularExpressions.Reference/4.2.2.0": {
         "compile": {
           "System.Text.RegularExpressions.dll": {}
@@ -3952,6 +3969,13 @@
       "path": "system.text.encodings.web/4.5.0",
       "hashPath": "system.text.encodings.web.4.5.0.nupkg.sha512"
     },
+    "System.Text.Json/5.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/UM3UK1dXKl8Ybysg/21gM4S8DJgkR+yLU8JwqCVbuNqQNImelntgYFAN5QxR8sJJ1kMx//hOUdf0lltosi8cQ==",
+      "path": "system.text.json/5.0.1",
+      "hashPath": "system.text.json.5.0.1.nupkg.sha512"
+    },
     "System.Text.RegularExpressions/4.3.0": {
       "type": "package",
       "serviceable": true,
@@ -4009,6 +4033,11 @@
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
     },
     "WalletAPI.Commons.Utilities/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "WalletAPI.Services.Core/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -5204,11 +5233,6 @@
       "sha512": ""
     },
     "System.Text.Encodings.Web.Reference/4.0.5.0": {
-      "type": "referenceassembly",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "System.Text.Json/4.0.1.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "sIJBMXn6O1bRI731VqSeuvF3x7JTjhNqs6cFQicPKAfXj8zHLfDkVYBV57jYEiwRERYjRHEUM+l3EFNoU7KNAA==",
+  "dgSpecHash": "gOYtPHGG2jVhoS/Yek6jrN11tW+ein95F6/Q07UQv6JqYdNfgrECOxf4TCHPCrBaR9ojOGhC79W4H1FvJQ2zjw==",
   "success": true,
   "projectFilePath": "C:\\Users\\hp\\Documents\\walletAPI\\WalletAPI.Services.API\\WalletAPI.Services.API.csproj",
   "expectedPackageFiles": [
@@ -114,6 +114,7 @@
     "C:\\Users\\hp\\.nuget\\packages\\system.text.encoding.codepages\\4.5.0\\system.text.encoding.codepages.4.5.0.nupkg.sha512",
     "C:\\Users\\hp\\.nuget\\packages\\system.text.encoding.extensions\\4.3.0\\system.text.encoding.extensions.4.3.0.nupkg.sha512",
     "C:\\Users\\hp\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512",
+    "C:\\Users\\hp\\.nuget\\packages\\system.text.json\\5.0.1\\system.text.json.5.0.1.nupkg.sha512",
     "C:\\Users\\hp\\.nuget\\packages\\system.text.regularexpressions\\4.3.0\\system.text.regularexpressions.4.3.0.nupkg.sha512",
     "C:\\Users\\hp\\.nuget\\packages\\system.threading\\4.3.0\\system.threading.4.3.0.nupkg.sha512",
     "C:\\Users\\hp\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",

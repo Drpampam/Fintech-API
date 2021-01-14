@@ -176,7 +176,7 @@ namespace WalletAPI.Services.Data.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("UsersId")
+                    b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("WalletId")
@@ -185,7 +185,7 @@ namespace WalletAPI.Services.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UsersId");
+                    b.HasIndex("UserId");
 
                     b.HasIndex("WalletId");
 
@@ -377,9 +377,9 @@ namespace WalletAPI.Services.Data.Migrations
 
             modelBuilder.Entity("WalletAPI.Services.Models.Transaction", b =>
                 {
-                    b.HasOne("WalletAPI.Services.Models.User", "Users")
+                    b.HasOne("WalletAPI.Services.Models.User", "User")
                         .WithMany("Transactions")
-                        .HasForeignKey("UsersId");
+                        .HasForeignKey("UserId");
 
                     b.HasOne("WalletAPI.Services.Models.Wallet", "Wallet")
                         .WithMany("Transactions")

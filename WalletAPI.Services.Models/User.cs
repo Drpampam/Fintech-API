@@ -11,8 +11,8 @@ namespace WalletAPI.Services.Models
         public string FirstName { get; set; }
         [Required]
         public string LastName { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
         public ICollection<Wallet> Wallets { get; set; }
         public ICollection<Transaction> Transactions { get; set; }

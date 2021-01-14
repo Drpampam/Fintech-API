@@ -76,11 +76,13 @@ C:\Users\hp\source\repos\Wallet\WalletAPI.Services.API\obj\Debug\netcoreapp3.1\W
 C:\Users\hp\source\repos\Wallet\WalletAPI.Services.API\obj\Debug\netcoreapp3.1\WalletAPI.Services.API.dll
 C:\Users\hp\source\repos\Wallet\WalletAPI.Services.API\obj\Debug\netcoreapp3.1\WalletAPI.Services.API.pdb
 C:\Users\hp\source\repos\Wallet\WalletAPI.Services.API\obj\Debug\netcoreapp3.1\WalletAPI.Services.API.genruntimeconfig.cache
-C:\Users\hp\source\repos\Wallet\WalletAPI.Services.API\obj\Debug\netcoreapp3.1\WalletAPI.Services.API.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\hp\source\repos\Wallet\WalletAPI.Services.API\bin\Debug\netcoreapp3.1\WalletAPI.Commons.Utilities.dll
 C:\Users\hp\source\repos\Wallet\WalletAPI.Services.API\bin\Debug\netcoreapp3.1\WalletAPI.Services.DTOs.dll
 C:\Users\hp\source\repos\Wallet\WalletAPI.Services.API\bin\Debug\netcoreapp3.1\WalletAPI.Commons.Utilities.pdb
 C:\Users\hp\source\repos\Wallet\WalletAPI.Services.API\bin\Debug\netcoreapp3.1\WalletAPI.Services.DTOs.pdb
+C:\Users\hp\source\repos\Wallet\WalletAPI.Services.API\bin\Debug\netcoreapp3.1\System.Text.Json.dll
+C:\Users\hp\source\repos\Wallet\WalletAPI.Services.API\bin\Debug\netcoreapp3.1\WalletAPI.Services.Core.dll
+C:\Users\hp\source\repos\Wallet\WalletAPI.Services.API\bin\Debug\netcoreapp3.1\WalletAPI.Services.Core.pdb
 C:\Users\hp\Documents\walletAPI\WalletAPI.Services.API\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\hp\Documents\walletAPI\WalletAPI.Services.API\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\hp\Documents\walletAPI\WalletAPI.Services.API\bin\Debug\netcoreapp3.1\WalletAPI.Services.API.exe
@@ -134,6 +136,7 @@ C:\Users\hp\Documents\walletAPI\WalletAPI.Services.API\bin\Debug\netcoreapp3.1\S
 C:\Users\hp\Documents\walletAPI\WalletAPI.Services.API\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\hp\Documents\walletAPI\WalletAPI.Services.API\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
 C:\Users\hp\Documents\walletAPI\WalletAPI.Services.API\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+C:\Users\hp\Documents\walletAPI\WalletAPI.Services.API\bin\Debug\netcoreapp3.1\System.Text.Json.dll
 C:\Users\hp\Documents\walletAPI\WalletAPI.Services.API\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
 C:\Users\hp\Documents\walletAPI\WalletAPI.Services.API\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
 C:\Users\hp\Documents\walletAPI\WalletAPI.Services.API\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
@@ -143,10 +146,12 @@ C:\Users\hp\Documents\walletAPI\WalletAPI.Services.API\bin\Debug\netcoreapp3.1\r
 C:\Users\hp\Documents\walletAPI\WalletAPI.Services.API\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\hp\Documents\walletAPI\WalletAPI.Services.API\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\hp\Documents\walletAPI\WalletAPI.Services.API\bin\Debug\netcoreapp3.1\WalletAPI.Commons.Utilities.dll
+C:\Users\hp\Documents\walletAPI\WalletAPI.Services.API\bin\Debug\netcoreapp3.1\WalletAPI.Services.Core.dll
 C:\Users\hp\Documents\walletAPI\WalletAPI.Services.API\bin\Debug\netcoreapp3.1\WalletAPI.Services.Data.dll
 C:\Users\hp\Documents\walletAPI\WalletAPI.Services.API\bin\Debug\netcoreapp3.1\WalletAPI.Services.DTOs.dll
 C:\Users\hp\Documents\walletAPI\WalletAPI.Services.API\bin\Debug\netcoreapp3.1\WalletAPI.Services.Models.dll
 C:\Users\hp\Documents\walletAPI\WalletAPI.Services.API\bin\Debug\netcoreapp3.1\WalletAPI.Commons.Utilities.pdb
+C:\Users\hp\Documents\walletAPI\WalletAPI.Services.API\bin\Debug\netcoreapp3.1\WalletAPI.Services.Core.pdb
 C:\Users\hp\Documents\walletAPI\WalletAPI.Services.API\bin\Debug\netcoreapp3.1\WalletAPI.Services.Data.pdb
 C:\Users\hp\Documents\walletAPI\WalletAPI.Services.API\bin\Debug\netcoreapp3.1\WalletAPI.Services.DTOs.pdb
 C:\Users\hp\Documents\walletAPI\WalletAPI.Services.API\bin\Debug\netcoreapp3.1\WalletAPI.Services.Models.pdb

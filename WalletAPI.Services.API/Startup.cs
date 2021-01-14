@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WalletAPI.Services.Core;
 using WalletAPI.Services.Data;
 using WalletAPI.Services.Data.Services;
 using WalletAPI.Services.Models;
@@ -43,6 +44,12 @@ namespace WalletAPI.Services.API
 
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IUserCurrencyRepository, UserCurrencyRepository>();
+            services.AddScoped<ICurrencyService, CurrencyService>();
+            services.AddScoped<IWalletRepository, WalletRepository>();
+            services.AddScoped<ITransactionRepository, TransactionRepository>();
+
+            // register fixer
+            services.Configure<Fixer>(Configuration.GetSection("Fixer"));
 
             // Identity service
             services.AddIdentity<User, IdentityRole>(option =>

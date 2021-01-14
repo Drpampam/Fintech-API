@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\WalletAPI.Commons.Utilities\WalletAPI.Commons.Utilities.csproj" />
+    <ProjectReference Include="..\WalletAPI.Services.Core\WalletAPI.Services.Core.csproj" />
     <ProjectReference Include="..\WalletAPI.Services.Data\WalletAPI.Services.Data.csproj" />
     <ProjectReference Include="..\WalletAPI.Services.DTOs\WalletAPI.Services.DTOs.csproj" />
     <ProjectReference Include="..\WalletAPI.Services.Models\WalletAPI.Services.Models.csproj" />

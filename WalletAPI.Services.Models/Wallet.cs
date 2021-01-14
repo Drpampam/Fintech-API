@@ -8,7 +8,6 @@ namespace WalletAPI.Services.Models
 {
     public class Wallet : BaseModel
     {
-        [Required]
         public double Balance { get; set; } = 0;
         [Required]
         public string Currency { get; set; }

@@ -12,11 +12,13 @@ namespace WalletAPI.Services.Models
         [Required]
         public string Currency { get; set; }
         [Required]
+        [Range(0, int.MaxValue, ErrorMessage = "Enter a valid integer number")]
         public double Amount { get; set; }
         [Required]
         public string Status { get; set;}
 
-        public User Users { get; set; }
+        public string UserId { get; set; }
+        public User User { get; set; }
         [Required]
         public string WalletId { get; set; }
         public Wallet Wallet { get; set; }
