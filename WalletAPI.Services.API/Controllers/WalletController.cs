@@ -25,9 +25,11 @@ namespace WalletAPI.Services.API.Controllers
         private readonly IWalletRepository _walletRepository;
         private readonly IGenericRepository<Transaction> _transactionRepo;
         private readonly ICurrencyService _currencyService;
+        private readonly IUserCurrencyRepository _userCurrencyRepository;
         public WalletController(ILogger<WalletController> logger, UserManager<User> userManager,
             IGenericRepository<Wallet> walletRepo, IWalletRepository walletRepository,
-            IGenericRepository<Transaction> transactionRepo, ICurrencyService currencyService)
+            IGenericRepository<Transaction> transactionRepo, ICurrencyService currencyService,
+            IUserCurrencyRepository userCurrencyRepository)
         {
             _logger = logger;
             _userManager = userManager;
@@ -35,6 +37,7 @@ namespace WalletAPI.Services.API.Controllers
             _walletRepository = walletRepository;
             _transactionRepo = transactionRepo;
             _currencyService = currencyService;
+            _userCurrencyRepository = userCurrencyRepository;
         }
 
         [Authorize(Roles = "elite")]
@@ -74,7 +77,7 @@ namespace WalletAPI.Services.API.Controllers
         public async Task<IActionResult> GetUserWallet(string id)
         {
             if (string.IsNullOrWhiteSpace(id))
-                return BadRequest(ResponseMessage.Message("Bad request", errors: new { message = "Id cannot be empty" }));
+                return BadRequest(ResponseMessage.Message("Bad request", errors: "Id cannot be empty"));
 
             var admin = await _userManager.GetUserAsync(User);
             if (admin == null)
@@ -109,7 +112,7 @@ namespace WalletAPI.Services.API.Controllers
             catch (Exception e)
             {
                 _logger.LogError(e.Message);
-                return BadRequest(ResponseMessage.Message("Data access error", errors: new { message = "Could not access record from data source" }));
+                return BadRequest(ResponseMessage.Message("Data access error", errors: "Could not access record from data source" ));
             }
         }
 
@@ -120,70 +123,134 @@ namespace WalletAPI.Services.API.Controllers
             var user = await _userManager.GetUserAsync(User);
             if (user == null) return NotFound(ResponseMessage.Message("Not found", errors: "User does not exit"));
             
-            if (amount < 1)
-                return BadRequest(ResponseMessage.Message("Bad request", errors: "Amount must be greater than zero"));
-
-            currency = currency.ToUpper();
-            if (!await _currencyService.VerifyCurrencyExist(currency))
-                return BadRequest(ResponseMessage.Message("Bad request", errors: "Enter a valid Currency Type"));
-
-            Wallet wallet;
-            try
+            if (amount > 0)
             {
-                wallet = await _walletRepository.GetWalletByUserId(user.Id);
-            }
-            catch (Exception e)
-            {
-                _logger.LogError(e.Message);
-                return BadRequest(ResponseMessage.Message("Bad request", errors: "Data processing error"));
-            }
+                currency = currency.ToUpper();
+                if (!await _currencyService.VerifyCurrencyExist(currency))
+                    return BadRequest(ResponseMessage.Message("Bad request", errors: "Enter a valid Currency Type"));
 
-            if(await _userManager.IsInRoleAsync(user, "noob"))
-            {
+                Wallet wallet;
                 try
                 {
-                    var transaction = new Transaction
-                    {
-                        Id = Guid.NewGuid().ToString(),
-                        UserId = user.Id,
-                        Type = "deposit",
-                        Currency = currency,
-                        Amount = amount,
-                        Status = "pending",
-                        WalletId = wallet.Id
-                    };
-
-                    await _transactionRepo.Add(transaction);
-                    return Ok(ResponseMessage.Message("Success", data: $"Successfully added transaction with wallet {wallet.Id}"));
+                    wallet = await _walletRepository.GetWalletByUserId(user.Id);
                 }
                 catch (Exception e)
                 {
                     _logger.LogError(e.Message);
                     return BadRequest(ResponseMessage.Message("Bad request", errors: "Data processing error"));
-                }                
-            }
-            else
-            {                
-                var result = await _walletRepository.GetWalletOfUserByCurrency(user.Id, currency);
-                if(result == null)
+                }
+
+                if (await _userManager.IsInRoleAsync(user, "noob"))
                 {
                     try
                     {
-                        Wallet newWallet = new Wallet
+                        var transaction = new Transaction
                         {
                             Id = Guid.NewGuid().ToString(),
                             UserId = user.Id,
-                            Currency = currency
+                            Type = "deposit",
+                            Currency = currency,
+                            Amount = amount,
+                            Status = "pending",
+                            WalletId = wallet.Id
                         };
 
-                        await _walletRepo.Add(newWallet);
-                        result = await _walletRepository.GetWalletOfUserByCurrency(user.Id, currency);
+                        await _transactionRepo.Add(transaction);
+                        return Ok(ResponseMessage.Message("Success", data: $"Successfully added transaction with wallet {wallet.Id}"));
                     }
                     catch (Exception e)
                     {
                         _logger.LogError(e.Message);
                         return BadRequest(ResponseMessage.Message("Bad request", errors: "Data processing error"));
-                    }                    
+                    }
+                }
+                else
+                {
+                    var result = await _walletRepository.GetWalletOfUserByCurrency(user.Id, currency);
+                    if (result == null)
+                    {
+                        try
+                        {
+                            Wallet newWallet = new Wallet
+                            {
+                                Id = Guid.NewGuid().ToString(),
+                                UserId = user.Id,
+                                Currency = currency
+                            };
+
+                            await _walletRepo.Add(newWallet);
+                            result = await _walletRepository.GetWalletOfUserByCurrency(user.Id, currency);
+                        }
+                        catch (Exception e)
+                        {
+                            _logger.LogError(e.Message);
+                            return BadRequest(ResponseMessage.Message("Bad request", errors: "Data processing error"));
+                        }
+                    }
+
+                    Transaction transaction;
+                    try
+                    {
+                        transaction = new Transaction
+                        {
+                            Id = Guid.NewGuid().ToString(),
+                            UserId = user.Id,
+                            Type = "deposit",
+                            WalletId = result.Id,
+                            Amount = amount,
+                            Currency = currency,
+                            Status = "approved"
+                        };
+
+                        await _transactionRepo.Add(transaction);
+                    }
+                    catch (Exception e)
+                    {
+                        await _walletRepo.Delete(wallet);
+                        _logger.LogError(e.Message);
+                        return BadRequest(ResponseMessage.Message("Bad request", errors: "Data processing error"));
+                    }
+
+                    try
+                    {
+                        wallet.Balance += amount;
+                        await _walletRepo.Update(wallet);
+                        return Ok(ResponseMessage.Message("Success", data: $"Succesffuly funded wallet {result.Id} with {currency}{amount}"));
+                    }
+                    catch (Exception e)
+                    {
+                        await _transactionRepo.Delete(transaction);
+                        await _walletRepo.Delete(wallet);
+                        _logger.LogError(e.Message);
+                        return BadRequest(ResponseMessage.Message("Bad request", errors: "Failed to fund wallet"));
+                    }
+                }
+            }
+            return BadRequest(ResponseMessage.Message("Bad request", errors: "Amount must be greater than zero"));            
+        }
+
+        [Authorize(Roles = "admin")]
+        [HttpPost("fund-wallet/{id}")]
+        public async Task<IActionResult> FundWalletByAdmin(string currency, double amount, string id)
+        {
+            var admin = await _userManager.GetUserAsync(User);
+            if (admin == null) return NotFound(ResponseMessage.Message("Not found", errors: "User does not exit"));
+            if (amount > 0)
+            {
+                currency = currency.ToUpper();
+                if (!await _currencyService.VerifyCurrencyExist(currency))
+                    return BadRequest(ResponseMessage.Message("Bad request", errors: "Enter a valid Currency Type"));
+                Wallet wallet;
+                try
+                {
+                    wallet = await _walletRepository.GetWalletById(id);
+                    if (wallet == null)
+                        return NotFound(ResponseMessage.Message("Not found", errors: "Wallet does not exist"));
+                }
+                catch (Exception e)
+                {
+                    _logger.LogError(e.Message);
+                    return BadRequest(ResponseMessage.Message("Bad request", errors: "Data processing error"));
                 }
 
                 Transaction transaction;
@@ -192,9 +259,9 @@ namespace WalletAPI.Services.API.Controllers
                     transaction = new Transaction
                     {
                         Id = Guid.NewGuid().ToString(),
-                        UserId = user.Id,
+                        UserId = wallet.UserId,
                         Type = "deposit",
-                        WalletId = result.Id,
+                        WalletId = wallet.Id,
                         Amount = amount,
                         Currency = currency,
                         Status = "approved"
@@ -204,47 +271,157 @@ namespace WalletAPI.Services.API.Controllers
                 }
                 catch (Exception e)
                 {
-                    await _walletRepo.Delete(wallet);
                     _logger.LogError(e.Message);
                     return BadRequest(ResponseMessage.Message("Bad request", errors: "Data processing error"));
                 }
 
                 try
                 {
-                    wallet.Balance += amount;
+                    var user = await _userManager.FindByIdAsync(wallet.UserId);
+                    if (user == null)
+                        return NotFound(ResponseMessage.Message("Not found", errors: $"User with wallet {id} does not exist"));
+
+                    UserCurrency userCurrency;
+                    try
+                    {
+                        userCurrency = await _userCurrencyRepository.GetUserCurrencyByUserId(user.Id);
+                    }
+                    catch (Exception e)
+                    {
+                        await _transactionRepo.Delete(transaction);
+                        _logger.LogError(e.Message);
+                        return BadRequest(ResponseMessage.Message("Data access error", errors: "Could not access record from data source"));
+                    }
+
+                    var curr = userCurrency.MainCurrency;
+
+                    var convertedAmount = await _currencyService.CurrencyConverter(currency, curr, amount);
+
+                    wallet.Balance += convertedAmount;
                     await _walletRepo.Update(wallet);
-                    return Ok(ResponseMessage.Message("Success", data: $"Succesffuly funded wallet {result.Id} with {currency}{amount}"));
+                    return Ok(ResponseMessage.Message("Success", data: $"Wallet {id} has been funded with {currency}{amount} by {admin.Id} successfully!!!"));
                 }
                 catch (Exception e)
                 {
                     await _transactionRepo.Delete(transaction);
-                    await _walletRepo.Delete(wallet);
                     _logger.LogError(e.Message);
-                    return BadRequest(ResponseMessage.Message("Bad request", errors: new { message = "Failed to fund wallet" }));
+                    return BadRequest(ResponseMessage.Message("Bad request", errors: "Failed to fund wallet"));
                 }
             }
+            return BadRequest(ResponseMessage.Message("Bad request", errors: "Amount must be greater than zero"));            
         }
 
-        [Authorize(Roles = "admin")]
-        [HttpPost("fund-wallet/user/{id}")]
-        public async Task<IActionResult> FundWalletByAdmin(string currency, double amount, string id)
+        [Authorize(Roles = "noob, elite")]
+        [HttpPost("wallet-withdraw")]
+        public async Task<IActionResult> WithdrawFromWallet(string currency, double amount)
         {
-            var admin = await _userManager.GetUserAsync(User);
-            if (admin == null) return NotFound(ResponseMessage.Message("Not found", errors: "User does not exit"));
-            if (admin.Id == id)
-                return Unauthorized(ResponseMessage.Message("Unauthorized", "User does not have authorized access"));
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null) 
+                return NotFound(ResponseMessage.Message("Not found", "User does not exist"));
 
-            var user = await  _userManager.FindByIdAsync(id);
-            if (user == null)
-                return BadRequest(ResponseMessage.Message("Bad request", errors: "User does not exist"));
-            if (amount < 1)
-                return BadRequest(ResponseMessage.Message("Bad request", errors: "Amount must be greater than zero"));
+            if(amount > 0)
+            {
+                currency = currency.ToUpper();
+                if (!await _currencyService.VerifyCurrencyExist(currency))
+                    return BadRequest(ResponseMessage.Message("Bad request", errors: "Enter a valid Currency Type"));
 
-            currency = currency.ToUpper();
-            if (!await _currencyService.VerifyCurrencyExist(currency))
-                return BadRequest(ResponseMessage.Message("Bad request", errors: "Enter a valid Currency Type"));
+                Transaction transaction;
 
-            return Ok(ResponseMessage.Message("Success", data: $"Successfully funded user {id} with {currency}{amount}"));
+                if (await _userManager.IsInRoleAsync(user, "noob"))
+                {
+                    var wallet = await _walletRepository.GetWalletByUserId(user.Id);
+
+                    try
+                    {
+                        transaction = new Transaction
+                        {
+                            Id = Guid.NewGuid().ToString(),
+                            UserId = user.Id,
+                            Type = "withdraw",
+                            WalletId = wallet.Id,
+                            Amount = amount,
+                            Currency = currency,
+                            Status = "pending"
+                        };
+
+                        await _transactionRepo.Add(transaction);
+                        return Ok(ResponseMessage.Message($"Success", data: $"Withdrawal transaction {transaction.Id} initiated. Awaiting approval from an Admin"));
+                    }
+                    catch (Exception e)
+                    {
+                        _logger.LogError(e.Message);
+                        return BadRequest(ResponseMessage.Message("Bad request", errors: "Data processing error"));
+                    }
+                }
+                else
+                {
+                    var wallet = await _walletRepository.GetWalletOfUserByCurrency(user.Id, currency);
+
+                    string transactionCurr = currency;
+                    if (wallet == null)
+                    {
+                        try
+                        {
+                            var curr = await _userCurrencyRepository.GetUserCurrencyByUserId(user.Id);
+                            if (curr == null)
+                                return NotFound(ResponseMessage.Message("Not found", errors: "User currency not found"));
+                            wallet = await _walletRepository.GetWalletOfUserByCurrency(user.Id, curr.MainCurrency);
+                            if (wallet == null)
+                                return NotFound(ResponseMessage.Message("Not found", errors: "Wallet currency not found"));
+                            transactionCurr = curr.MainCurrency;
+                        }
+                        catch (Exception e)
+                        {
+                            _logger.LogError(e.Message);
+                            return BadRequest(ResponseMessage.Message("Data access error", errors: "Could not access record from data source"));
+                        }
+                    }
+
+                    try
+                    {
+                        transaction = new Transaction
+                        {
+                            Id = Guid.NewGuid().ToString(),
+                            UserId = user.Id,
+                            Type = "withdraw",
+                            WalletId = wallet.Id,
+                            Amount = amount,
+                            Currency = currency,
+                            Status = "approved"
+                        };
+
+                        await _transactionRepo.Add(transaction);
+                    }
+                    catch (Exception e)
+                    {
+                        _logger.LogError(e.Message);
+                        return BadRequest(ResponseMessage.Message("Bad request", errors: "Data processing error"));
+                    }
+
+                    try
+                    {
+                        var conversion = await _currencyService.CurrencyConverter(currency, transactionCurr, amount);
+                        if (wallet.Balance >= conversion)
+                        {
+                            wallet.Balance -= conversion;
+
+                            await _walletRepo.Update(wallet);
+                            return Ok(ResponseMessage.Message("Success", data: "Withdrawal successful"));
+                        }
+                        else
+                        {
+                            return BadRequest(ResponseMessage.Message("Bad request", errors: "Insufficient funds available for withdrawal"));
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        await _transactionRepo.Delete(transaction);
+                        _logger.LogError(e.Message);
+                        return BadRequest(ResponseMessage.Message("Bad request", errors: "Data processing error"));
+                    }
+                }
+            }
+            return BadRequest(ResponseMessage.Message("Bad request", errors: "Amount must be greater than zero"));
         }
     }
 }

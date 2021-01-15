@@ -83,6 +83,7 @@ C:\Users\hp\source\repos\Wallet\WalletAPI.Services.API\bin\Debug\netcoreapp3.1\W
 C:\Users\hp\source\repos\Wallet\WalletAPI.Services.API\bin\Debug\netcoreapp3.1\System.Text.Json.dll
 C:\Users\hp\source\repos\Wallet\WalletAPI.Services.API\bin\Debug\netcoreapp3.1\WalletAPI.Services.Core.dll
 C:\Users\hp\source\repos\Wallet\WalletAPI.Services.API\bin\Debug\netcoreapp3.1\WalletAPI.Services.Core.pdb
+C:\Users\hp\source\repos\Wallet\WalletAPI.Services.API\obj\Debug\netcoreapp3.1\WalletAPI.Services.API.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\hp\Documents\walletAPI\WalletAPI.Services.API\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\hp\Documents\walletAPI\WalletAPI.Services.API\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\hp\Documents\walletAPI\WalletAPI.Services.API\bin\Debug\netcoreapp3.1\WalletAPI.Services.API.exe
