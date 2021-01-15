@@ -12,7 +12,7 @@ Technologies Used
       -  Is an API that supports user interface (UI) login functionality.
       -  Manages users, passwords, profile data, roles, claims, tokens, email confirmation, and more.
 * NUnit: NUnit is a unit-testing framework for all .Net languages.
-* Swashbuckle ASPNETCore: Swashbuckle is an open source project for generating Swagger documents for Web APIs that are built with ASP.NET Core.
+* Swashbuckle ASPNETCore: Swashbuckle is an open-source project for generating Swagger documents for Web APIs that are built with ASP.NET Core.
 * Microsoft Authentication JwtBearer: Contains types that enable support for JWT bearer based authentication. Bearer authentication middleware component
                      which is added to an HTTP pipeline. 
 * Microsoft EntityFrameworkCore SQLServer: Microsoft.EntityFrameworkCore.SqlServer database provider allows Entity Framework Core to be used with Microsoft 
