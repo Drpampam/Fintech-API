@@ -43,6 +43,32 @@ namespace Jumga.Services.API.Controllers
             _currencyService = currencyService;
         }
 
+        // Get All Users
+        [Authorize(Roles = "admin")]
+        [HttpGet("{page}")]
+        public async Task<IActionResult> GetAllUsers(int page)
+        {
+            if (page < 1)
+                return BadRequest(ResponseMessage.Message("Bad request", errors: "Page must be greater than 1"));
+
+            var admin = await _userManager.GetUserAsync(User);
+            if (admin == null)
+                return Unauthorized(ResponseMessage.Message("Unauthorized", errors: "User does not have authorized access"));
+
+            try
+            {
+                var users = _userManager.Users;
+                if (users == null)
+                    return NotFound(ResponseMessage.Message("Not found", errors: "Users not found"));
+                return Ok(ResponseMessage.Message("Success", data: users));
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return BadRequest(ResponseMessage.Message("Bad request", errors: "Data processing error"));
+            }
+        }
+
         // Promote User
         [Authorize(Roles = "admin")]
         [HttpPost("{id}/promote-user")]
