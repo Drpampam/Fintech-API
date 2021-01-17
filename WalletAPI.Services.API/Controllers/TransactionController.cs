@@ -42,6 +42,7 @@ namespace WalletAPI.Services.API.Controllers
             _walletRepo = walletRepo;
         }
 
+        // Endpoint to approve a transaction by the admin
         [Authorize(Roles = "admin")]
         [HttpPatch("approve/user/{id}")]
         public async Task<IActionResult> ApproveTransaction(string id)
@@ -138,6 +139,7 @@ namespace WalletAPI.Services.API.Controllers
             return Ok(ResponseMessage.Message("Success", data: $"Transaction with {transaction.Id} has been approved"));
         }
 
+        // Endpoint to get all transactions by status by the admin
         [Authorize(Roles = "admin")]
         [HttpGet("{status}")]
         public async Task<IActionResult> GetTransaction(string status)

@@ -24,8 +24,10 @@ namespace WalletAPI.Services.Core
 
         public async Task<bool> VerifyCurrencyExist(string curr)
         {
+            // API Call
             var response = await Util.APICall(API);
             var verify = response.Rates.Keys;
+            // Looping through the Keys of our dictionary object
             foreach (var item in verify)
             {
                 if (item.Contains(curr))

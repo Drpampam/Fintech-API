@@ -40,6 +40,7 @@ namespace WalletAPI.Services.API.Controllers
             _userCurrencyRepository = userCurrencyRepository;
         }
 
+        // Endpoint to add to wallet of an elite user
         [Authorize(Roles = "elite")]
         [HttpPost("add-wallet")]
         public async Task<IActionResult> AddWallet(string currency)
@@ -72,6 +73,7 @@ namespace WalletAPI.Services.API.Controllers
             }            
         }
 
+        // Endpoint to get wallet of a user by the wallet id
         [Authorize(Roles = "admin")]
         [HttpGet("user/{id}")]
         public async Task<IActionResult> GetUserWallet(string id)
@@ -116,6 +118,7 @@ namespace WalletAPI.Services.API.Controllers
             }
         }
 
+        // Endpoint to fund wallet by a noob or elite user
         [Authorize(Roles = "noob, elite")]
         [HttpPost("fund-wallet")]
         public async Task<IActionResult> FundUserWallet(string currency, double amount)
@@ -252,6 +255,7 @@ namespace WalletAPI.Services.API.Controllers
             return BadRequest(ResponseMessage.Message("Bad request", errors: "Amount must be greater than zero"));            
         }
 
+        // Endpoint to fund wallet of a noob or elite user by the admin
         [Authorize(Roles = "admin")]
         [HttpPost("fund-wallet/{id}")]
         public async Task<IActionResult> FundWalletByAdmin(string currency, double amount, string id)
@@ -334,6 +338,7 @@ namespace WalletAPI.Services.API.Controllers
             return BadRequest(ResponseMessage.Message("Bad request", errors: "Amount must be greater than zero"));            
         }
 
+        // Endpoint to withdraw from wallet by a noob or elite user
         [Authorize(Roles = "noob, elite")]
         [HttpPost("wallet-withdraw")]
         public async Task<IActionResult> WithdrawFromWallet(string currency, double amount)

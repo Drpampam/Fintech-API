@@ -44,6 +44,7 @@ namespace Jumga.Services.API.Controllers
             _currencyService = currencyService;
         }
 
+        // Endpoint to register a user
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] UserToRegisterDTO model)
         {
@@ -131,6 +132,7 @@ namespace Jumga.Services.API.Controllers
             return Ok(ResponseMessage.Message("Success", data: "Successfully registered!!!"));
         }
 
+        // Endpoint to login a user
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] UserToLoginDTO model)
         {

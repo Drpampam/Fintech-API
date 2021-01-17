@@ -43,7 +43,7 @@ namespace Jumga.Services.API.Controllers
             _currencyService = currencyService;
         }
 
-        // Get All Users
+        // Endpoint to Get All Users
         [Authorize(Roles = "admin")]
         [HttpGet()]
         public async Task<IActionResult> GetAllUsers()
@@ -76,7 +76,7 @@ namespace Jumga.Services.API.Controllers
             }
         }
 
-        // Promote User
+        // Endpoint to Promote User
         [Authorize(Roles = "admin")]
         [HttpPost("{id}/promote-user")]
         public async Task<IActionResult> PromoteUser(string id)
@@ -112,7 +112,7 @@ namespace Jumga.Services.API.Controllers
             }
         }
 
-        // Demote User
+        // Endpoint to Demote User
         [Authorize(Roles = "admin")]
         [HttpPost("{id}/demote-user")]
         public async Task<IActionResult> DemoteUser(string id)
@@ -156,7 +156,7 @@ namespace Jumga.Services.API.Controllers
             }
         }
 
-        // Change User Currency
+        // Endpoint to Change User Currency
         [Authorize(Roles = "admin")]
         [HttpPost("{id}/change-user-currency")]
         public async Task<IActionResult> ChangeUserCurrency(string id, string newUserCurrency)
