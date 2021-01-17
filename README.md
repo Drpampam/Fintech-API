@@ -4,6 +4,10 @@
 
 API Documentation Link: https://docs.google.com/document/d/13B7FcX9A-_anMCpg-Ac1tCy8TVGjCRiboua4r0Ey5Wo/edit
 
+How To Start The App: 
+* "docker-compose up" command in your CLI 
+* On your web browser, enter the link "http://localhost:8080/swagger/index.html"
+
 Technologies Used
 * Visual Studio IDE: It Microsoft Visual Studio is an integrated development environment from Microsoft. It is used to develop computer programs, 
                      as well as websites, web apps, web services and mobile apps. 
