@@ -258,19 +258,15 @@
           "dependencies": {
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
-              "version": "[16.5.0, )"
+              "version": "[16.8.3, )"
             },
             "NUnit": {
               "target": "Package",
-              "version": "[3.12.0, )"
+              "version": "[3.13.0, )"
             },
             "NUnit3TestAdapter": {
               "target": "Package",
-              "version": "[3.16.1, )"
-            },
-            "NUnitTestAdapter.WithFramework": {
-              "target": "Package",
-              "version": "[2.0.0, )"
+              "version": "[3.17.0, )"
             }
           },
           "imports": [

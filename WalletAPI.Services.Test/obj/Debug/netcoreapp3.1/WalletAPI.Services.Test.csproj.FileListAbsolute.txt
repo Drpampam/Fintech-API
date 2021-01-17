@@ -119,7 +119,5 @@ C:\Users\hp\Documents\walletAPI\WalletAPI.Services.Test\bin\Debug\netcoreapp3.1\
 C:\Users\hp\Documents\walletAPI\WalletAPI.Services.Test\bin\Debug\netcoreapp3.1\WalletAPI.Services.Core.pdb
 C:\Users\hp\Documents\walletAPI\WalletAPI.Services.Test\bin\Debug\netcoreapp3.1\WalletAPI.Commons.Utilities.pdb
 C:\Users\hp\Documents\walletAPI\WalletAPI.Services.Test\bin\Debug\netcoreapp3.1\WalletAPI.Services.Models.pdb
-C:\Users\hp\Documents\walletAPI\WalletAPI.Services.Test\bin\Debug\netcoreapp3.1\NUnit.VisualStudio.TestAdapter.dll
-C:\Users\hp\Documents\walletAPI\WalletAPI.Services.Test\bin\Debug\netcoreapp3.1\nunit.core.dll
-C:\Users\hp\Documents\walletAPI\WalletAPI.Services.Test\bin\Debug\netcoreapp3.1\nunit.core.interfaces.dll
-C:\Users\hp\Documents\walletAPI\WalletAPI.Services.Test\bin\Debug\netcoreapp3.1\nunit.util.dll
+C:\Users\hp\Documents\walletAPI\WalletAPI.Services.Test\bin\Debug\netcoreapp3.1\testhost.exe
+C:\Users\hp\Documents\walletAPI\WalletAPI.Services.Test\bin\Debug\netcoreapp3.1\nunit.engine.core.dll
