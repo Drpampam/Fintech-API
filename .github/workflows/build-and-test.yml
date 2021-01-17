@@ -1,4 +1,4 @@
-name: ASP .NET Core CI
+name: .NET Core
 on:
   push:
     branches: [ main ]
@@ -24,11 +24,11 @@ jobs:
       with:
         dotnet-version: 3.1.301
     - name: Restore dependencies
-      run: dotnet restore
-      working-directory: ./walletAPI/
+      run: dotnet restore WalletAPI.Services.Test/WalletAPI.Services.Test.csproj
+      working-directory: ./
     - name: Build
-      run: dotnet build --configuration Release --no-restore
-      working-directory: ./walletAPI/
-    - name: Test
+      run: dotnet build --configuration Release --no-restore WalletAPI.Services.Test/WalletAPI.Services.Test.csproj
+      working-directory: ./
+    - name: Test WalletAPI.Services.Test/WalletAPI.Services.Test.csproj
       run: dotnet test --no-restore --verbosity normal
-      working-directory: ./walletAPI/
+      working-directory: ./
