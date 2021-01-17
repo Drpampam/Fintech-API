@@ -11,6 +11,7 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("d69fdd78-ae30-4372-ad50-bc9b79fc4f6d")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("WalletAPI.Services.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
