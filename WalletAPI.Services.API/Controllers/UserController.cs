@@ -45,22 +45,29 @@ namespace Jumga.Services.API.Controllers
 
         // Get All Users
         [Authorize(Roles = "admin")]
-        [HttpGet("{page}")]
-        public async Task<IActionResult> GetAllUsers(int page)
+        [HttpGet()]
+        public async Task<IActionResult> GetAllUsers()
         {
-            if (page < 1)
-                return BadRequest(ResponseMessage.Message("Bad request", errors: "Page must be greater than 1"));
-
             var admin = await _userManager.GetUserAsync(User);
             if (admin == null)
                 return Unauthorized(ResponseMessage.Message("Unauthorized", errors: "User does not have authorized access"));
 
+            IQueryable userToReturn;
             try
             {
                 var users = _userManager.Users;
                 if (users == null)
                     return NotFound(ResponseMessage.Message("Not found", errors: "Users not found"));
-                return Ok(ResponseMessage.Message("Success", data: users));
+
+                userToReturn = users.Select(x => new
+                {
+                    x.Id,
+                    x.FirstName,
+                    x.LastName,
+                    x.Email,
+                    x.PhoneNumber
+                });
+                return Ok(ResponseMessage.Message("Success", data: userToReturn));
             }
             catch (Exception e)
             {

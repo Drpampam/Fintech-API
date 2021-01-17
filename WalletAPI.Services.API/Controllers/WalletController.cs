@@ -142,9 +142,10 @@ namespace WalletAPI.Services.API.Controllers
 
                 if (await _userManager.IsInRoleAsync(user, "noob"))
                 {
+                    Transaction transaction;
                     try
                     {
-                        var transaction = new Transaction
+                        transaction = new Transaction
                         {
                             Id = Guid.NewGuid().ToString(),
                             UserId = user.Id,
@@ -156,12 +157,34 @@ namespace WalletAPI.Services.API.Controllers
                         };
 
                         await _transactionRepo.Add(transaction);
-                        return Ok(ResponseMessage.Message("Success", data: $"Successfully added transaction with wallet {wallet.Id}"));
                     }
                     catch (Exception e)
                     {
                         _logger.LogError(e.Message);
                         return BadRequest(ResponseMessage.Message("Bad request", errors: "Data processing error"));
+                    }
+
+                    try
+                    {
+                        var result = await _walletRepository.GetWalletByUserId(user.Id);
+
+                        if (result == null)
+                            return NotFound(ResponseMessage.Message("Not found", errors: "Wallet does not exist"));
+
+                        var curr = result.Currency;
+
+                        var convertedAmount = await _currencyService.CurrencyConverter(currency, curr, amount);
+
+                        wallet.Balance += convertedAmount;
+                        await _walletRepo.Update(wallet);
+                        return Ok(ResponseMessage.Message("Success", data: $"Succesffuly funded wallet {result.Id} with {currency}{amount}"));
+                    }
+                    catch (Exception e)
+                    {
+                        await _transactionRepo.Delete(transaction);
+                        await _walletRepo.Delete(wallet);
+                        _logger.LogError(e.Message);
+                        return BadRequest(ResponseMessage.Message("Bad request", errors: "Failed to fund wallet"));
                     }
                 }
                 else

@@ -9,7 +9,7 @@ services:
       MSSQL_PID: Express
     ports: 
       - "1433:1433"
-  wallet-system-api:
+  wallet-api:
     build: .
     ports: 
       - "8080:80"
