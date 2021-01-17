@@ -1,6 +1,6 @@
 # walletAPI
 
-[![Build Status](https://ci-next.docker.com/public/buildStatus/icon?job=compose/master)](https://ci-next.docker.com/public/job/compose/job/master/)
+![.NET Core CI](https://github.com/neytoe/walletAPI/workflows/.NET%20Core%20CI/badge.svg)
 
 API Documentation Link: https://docs.google.com/document/d/13B7FcX9A-_anMCpg-Ac1tCy8TVGjCRiboua4r0Ey5Wo/edit
 
