@@ -13,11 +13,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: akhileshns/heroku-deploy@v3.8.9 # This is the action
-      with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "walletapi-heroku"
-          heroku_email: "nanyankah@gmail.com" 
     - name: Setup .NET Core SDK
       uses: actions/setup-dotnet@v1
       with:
