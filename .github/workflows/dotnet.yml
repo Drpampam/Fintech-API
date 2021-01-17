@@ -35,4 +35,4 @@ jobs:
       working-directory: ./WalletAPI.Services.API/
     - name: Test
       run: dotnet test --no-restore --verbosity normal
-      working-directory: ./WalletAPI.Services.API/
+      working-directory: ./WalletAPI.Services.Test/
