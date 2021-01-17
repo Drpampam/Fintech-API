@@ -8,7 +8,7 @@ namespace WalletAPI.Common.Utilities.Helpers
     {
         public static object Message(string title, object errors = null, object data = null)
         {
-            return new { title, errors, data };
+            return new { title, errors, data }; 
         }
     }
 }
