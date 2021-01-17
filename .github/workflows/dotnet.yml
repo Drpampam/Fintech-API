@@ -29,7 +29,7 @@ jobs:
         dotnet-version: 3.1.301
     - name: Restore dependencies
       run: dotnet restore
-      working-directory: ./WalletAPI.Services.API/
+      working-directory: ./WalletAPI.Services.API/       
     - name: Build
       run: dotnet build --configuration Release --no-restore
       working-directory: ./WalletAPI.Services.API/
