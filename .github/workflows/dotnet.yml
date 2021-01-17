@@ -17,7 +17,7 @@ jobs:
       with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "walletapi-heroku"
-          heroku_email: "nanyankah@gmail.com"
+          heroku_email: "nanyankah@gmail.com" 
     - name: Setup .NET Core SDK
       uses: actions/setup-dotnet@v1
       with:
