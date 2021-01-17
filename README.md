@@ -8,6 +8,10 @@ How To Start The App:
 * "docker-compose up" command in your CLI 
 * On your web browser, enter the link "http://localhost:8080/swagger/index.html"
 
+ADMIN DETAILS FOR LOGGING IN:
+* Email: randomuser@sample.com
+* Password: 01234Admin
+
 Technologies Used
 * Visual Studio IDE: It Microsoft Visual Studio is an integrated development environment from Microsoft. It is used to develop computer programs, 
                      as well as websites, web apps, web services and mobile apps. 
