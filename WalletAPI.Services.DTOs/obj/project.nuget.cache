@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "AXuo/pDM9LmAwSjvzZCr6S0RIBRtfXmvf3Oq0uxca4sh8K1z82ITjrdcQJTCNwCCE/KkjjBUpZ0pNsyi3cGkNQ==",
+  "dgSpecHash": "/xNX6o4Kk/DjZj/FM9R0p7CH8cXxkNQ4R466XgaZvJNRHb6JdhGyoHXt3HR+bSOsbAQcpI33G1FEf0NRnfgDlA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\hp\\Documents\\walletAPI\\WalletAPI.Services.DTOs\\WalletAPI.Services.DTOs.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\HP\\Desktop\\walletAPI\\walletAPI\\WalletAPI.Services.DTOs\\WalletAPI.Services.DTOs.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\HP\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.1.0\\microsoft.windowsdesktop.app.ref.3.1.0.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512"
+  ],
   "logs": []
 }

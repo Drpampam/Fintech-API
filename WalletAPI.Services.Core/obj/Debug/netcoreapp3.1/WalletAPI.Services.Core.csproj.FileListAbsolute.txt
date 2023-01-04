@@ -26,3 +26,17 @@ C:\Users\hp\Documents\walletAPI\WalletAPI.Services.Core\obj\Debug\netcoreapp3.1\
 C:\Users\hp\Documents\walletAPI\WalletAPI.Services.Core\obj\Debug\netcoreapp3.1\WalletAPI.Services.Core.csproj.CopyComplete
 C:\Users\hp\Documents\walletAPI\WalletAPI.Services.Core\obj\Debug\netcoreapp3.1\WalletAPI.Services.Core.dll
 C:\Users\hp\Documents\walletAPI\WalletAPI.Services.Core\obj\Debug\netcoreapp3.1\WalletAPI.Services.Core.pdb
+C:\Users\CHidimms\Desktop\Neto\walletAPI\WalletAPI.Services.Core\bin\Debug\netcoreapp3.1\WalletAPI.Services.Core.deps.json
+C:\Users\CHidimms\Desktop\Neto\walletAPI\WalletAPI.Services.Core\bin\Debug\netcoreapp3.1\WalletAPI.Services.Core.dll
+C:\Users\CHidimms\Desktop\Neto\walletAPI\WalletAPI.Services.Core\bin\Debug\netcoreapp3.1\WalletAPI.Services.Core.pdb
+C:\Users\CHidimms\Desktop\Neto\walletAPI\WalletAPI.Services.Core\bin\Debug\netcoreapp3.1\WalletAPI.Commons.Utilities.dll
+C:\Users\CHidimms\Desktop\Neto\walletAPI\WalletAPI.Services.Core\bin\Debug\netcoreapp3.1\WalletAPI.Services.Models.dll
+C:\Users\CHidimms\Desktop\Neto\walletAPI\WalletAPI.Services.Core\bin\Debug\netcoreapp3.1\WalletAPI.Commons.Utilities.pdb
+C:\Users\CHidimms\Desktop\Neto\walletAPI\WalletAPI.Services.Core\bin\Debug\netcoreapp3.1\WalletAPI.Services.Models.pdb
+C:\Users\CHidimms\Desktop\Neto\walletAPI\WalletAPI.Services.Core\obj\Debug\netcoreapp3.1\WalletAPI.Services.Core.csprojAssemblyReference.cache
+C:\Users\CHidimms\Desktop\Neto\walletAPI\WalletAPI.Services.Core\obj\Debug\netcoreapp3.1\WalletAPI.Services.Core.AssemblyInfoInputs.cache
+C:\Users\CHidimms\Desktop\Neto\walletAPI\WalletAPI.Services.Core\obj\Debug\netcoreapp3.1\WalletAPI.Services.Core.AssemblyInfo.cs
+C:\Users\CHidimms\Desktop\Neto\walletAPI\WalletAPI.Services.Core\obj\Debug\netcoreapp3.1\WalletAPI.Services.Core.csproj.CoreCompileInputs.cache
+C:\Users\CHidimms\Desktop\Neto\walletAPI\WalletAPI.Services.Core\obj\Debug\netcoreapp3.1\WalletAPI.Services.Core.csproj.CopyComplete
+C:\Users\CHidimms\Desktop\Neto\walletAPI\WalletAPI.Services.Core\obj\Debug\netcoreapp3.1\WalletAPI.Services.Core.dll
+C:\Users\CHidimms\Desktop\Neto\walletAPI\WalletAPI.Services.Core\obj\Debug\netcoreapp3.1\WalletAPI.Services.Core.pdb

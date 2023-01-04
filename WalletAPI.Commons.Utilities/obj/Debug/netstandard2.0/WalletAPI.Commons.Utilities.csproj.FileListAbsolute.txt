@@ -22,3 +22,15 @@ C:\Users\hp\Documents\walletAPI\WalletAPI.Commons.Utilities\obj\Debug\netstandar
 C:\Users\hp\Documents\walletAPI\WalletAPI.Commons.Utilities\obj\Debug\netstandard2.0\WalletAPI.Commons.Utilities.csproj.CopyComplete
 C:\Users\hp\Documents\walletAPI\WalletAPI.Commons.Utilities\obj\Debug\netstandard2.0\WalletAPI.Commons.Utilities.dll
 C:\Users\hp\Documents\walletAPI\WalletAPI.Commons.Utilities\obj\Debug\netstandard2.0\WalletAPI.Commons.Utilities.pdb
+C:\Users\CHidimms\Desktop\Neto\walletAPI\WalletAPI.Commons.Utilities\bin\Debug\netstandard2.0\WalletAPI.Commons.Utilities.deps.json
+C:\Users\CHidimms\Desktop\Neto\walletAPI\WalletAPI.Commons.Utilities\bin\Debug\netstandard2.0\WalletAPI.Commons.Utilities.dll
+C:\Users\CHidimms\Desktop\Neto\walletAPI\WalletAPI.Commons.Utilities\bin\Debug\netstandard2.0\WalletAPI.Commons.Utilities.pdb
+C:\Users\CHidimms\Desktop\Neto\walletAPI\WalletAPI.Commons.Utilities\bin\Debug\netstandard2.0\WalletAPI.Services.Models.dll
+C:\Users\CHidimms\Desktop\Neto\walletAPI\WalletAPI.Commons.Utilities\bin\Debug\netstandard2.0\WalletAPI.Services.Models.pdb
+C:\Users\CHidimms\Desktop\Neto\walletAPI\WalletAPI.Commons.Utilities\obj\Debug\netstandard2.0\WalletAPI.Commons.Utilities.csprojAssemblyReference.cache
+C:\Users\CHidimms\Desktop\Neto\walletAPI\WalletAPI.Commons.Utilities\obj\Debug\netstandard2.0\WalletAPI.Commons.Utilities.AssemblyInfoInputs.cache
+C:\Users\CHidimms\Desktop\Neto\walletAPI\WalletAPI.Commons.Utilities\obj\Debug\netstandard2.0\WalletAPI.Commons.Utilities.AssemblyInfo.cs
+C:\Users\CHidimms\Desktop\Neto\walletAPI\WalletAPI.Commons.Utilities\obj\Debug\netstandard2.0\WalletAPI.Commons.Utilities.csproj.CoreCompileInputs.cache
+C:\Users\CHidimms\Desktop\Neto\walletAPI\WalletAPI.Commons.Utilities\obj\Debug\netstandard2.0\WalletAPI.Commons.Utilities.csproj.CopyComplete
+C:\Users\CHidimms\Desktop\Neto\walletAPI\WalletAPI.Commons.Utilities\obj\Debug\netstandard2.0\WalletAPI.Commons.Utilities.dll
+C:\Users\CHidimms\Desktop\Neto\walletAPI\WalletAPI.Commons.Utilities\obj\Debug\netstandard2.0\WalletAPI.Commons.Utilities.pdb

@@ -1,39 +1,40 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hp\\Documents\\walletAPI\\WalletAPI.Services.Core\\WalletAPI.Services.Core.csproj": {}
+    "C:\\Users\\HP\\Desktop\\walletAPI\\walletAPI\\WalletAPI.Services.Core\\WalletAPI.Services.Core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hp\\Documents\\walletAPI\\WalletAPI.Commons.Utilities\\WalletAPI.Commons.Utilities.csproj": {
+    "C:\\Users\\HP\\Desktop\\walletAPI\\walletAPI\\WalletAPI.Commons.Utilities\\WalletAPI.Commons.Utilities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hp\\Documents\\walletAPI\\WalletAPI.Commons.Utilities\\WalletAPI.Commons.Utilities.csproj",
+        "projectUniqueName": "C:\\Users\\HP\\Desktop\\walletAPI\\walletAPI\\WalletAPI.Commons.Utilities\\WalletAPI.Commons.Utilities.csproj",
         "projectName": "WalletAPI.Commons.Utilities",
-        "projectPath": "C:\\Users\\hp\\Documents\\walletAPI\\WalletAPI.Commons.Utilities\\WalletAPI.Commons.Utilities.csproj",
-        "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hp\\Documents\\walletAPI\\WalletAPI.Commons.Utilities\\obj\\",
+        "projectPath": "C:\\Users\\HP\\Desktop\\walletAPI\\walletAPI\\WalletAPI.Commons.Utilities\\WalletAPI.Commons.Utilities.csproj",
+        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HP\\Desktop\\walletAPI\\walletAPI\\WalletAPI.Commons.Utilities\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netstandard2.0": {
             "targetAlias": "netstandard2.0",
             "projectReferences": {
-              "C:\\Users\\hp\\Documents\\walletAPI\\WalletAPI.Services.Models\\WalletAPI.Services.Models.csproj": {
-                "projectPath": "C:\\Users\\hp\\Documents\\walletAPI\\WalletAPI.Services.Models\\WalletAPI.Services.Models.csproj"
+              "C:\\Users\\HP\\Desktop\\walletAPI\\walletAPI\\WalletAPI.Services.Models\\WalletAPI.Services.Models.csproj": {
+                "projectPath": "C:\\Users\\HP\\Desktop\\walletAPI\\walletAPI\\WalletAPI.Services.Models\\WalletAPI.Services.Models.csproj"
               }
             }
           }
@@ -73,44 +74,46 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\hp\\Documents\\walletAPI\\WalletAPI.Services.Core\\WalletAPI.Services.Core.csproj": {
+    "C:\\Users\\HP\\Desktop\\walletAPI\\walletAPI\\WalletAPI.Services.Core\\WalletAPI.Services.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hp\\Documents\\walletAPI\\WalletAPI.Services.Core\\WalletAPI.Services.Core.csproj",
+        "projectUniqueName": "C:\\Users\\HP\\Desktop\\walletAPI\\walletAPI\\WalletAPI.Services.Core\\WalletAPI.Services.Core.csproj",
         "projectName": "WalletAPI.Services.Core",
-        "projectPath": "C:\\Users\\hp\\Documents\\walletAPI\\WalletAPI.Services.Core\\WalletAPI.Services.Core.csproj",
-        "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hp\\Documents\\walletAPI\\WalletAPI.Services.Core\\obj\\",
+        "projectPath": "C:\\Users\\HP\\Desktop\\walletAPI\\walletAPI\\WalletAPI.Services.Core\\WalletAPI.Services.Core.csproj",
+        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HP\\Desktop\\walletAPI\\walletAPI\\WalletAPI.Services.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\hp\\Documents\\walletAPI\\WalletAPI.Commons.Utilities\\WalletAPI.Commons.Utilities.csproj": {
-                "projectPath": "C:\\Users\\hp\\Documents\\walletAPI\\WalletAPI.Commons.Utilities\\WalletAPI.Commons.Utilities.csproj"
+              "C:\\Users\\HP\\Desktop\\walletAPI\\walletAPI\\WalletAPI.Commons.Utilities\\WalletAPI.Commons.Utilities.csproj": {
+                "projectPath": "C:\\Users\\HP\\Desktop\\walletAPI\\walletAPI\\WalletAPI.Commons.Utilities\\WalletAPI.Commons.Utilities.csproj"
               }
             }
           }
@@ -130,41 +133,57 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.10, 3.1.10]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.1.0, 3.1.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[3.1.0, 3.1.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\hp\\Documents\\walletAPI\\WalletAPI.Services.Models\\WalletAPI.Services.Models.csproj": {
+    "C:\\Users\\HP\\Desktop\\walletAPI\\walletAPI\\WalletAPI.Services.Models\\WalletAPI.Services.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hp\\Documents\\walletAPI\\WalletAPI.Services.Models\\WalletAPI.Services.Models.csproj",
+        "projectUniqueName": "C:\\Users\\HP\\Desktop\\walletAPI\\walletAPI\\WalletAPI.Services.Models\\WalletAPI.Services.Models.csproj",
         "projectName": "WalletAPI.Services.Models",
-        "projectPath": "C:\\Users\\hp\\Documents\\walletAPI\\WalletAPI.Services.Models\\WalletAPI.Services.Models.csproj",
-        "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hp\\Documents\\walletAPI\\WalletAPI.Services.Models\\obj\\",
+        "projectPath": "C:\\Users\\HP\\Desktop\\walletAPI\\walletAPI\\WalletAPI.Services.Models\\WalletAPI.Services.Models.csproj",
+        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HP\\Desktop\\walletAPI\\walletAPI\\WalletAPI.Services.Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -204,11 +223,12 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
